@@ -56,6 +56,8 @@ has_many :users, through: :users_groups
 has_many :chats, through: :chats_groups
 
 ## users_groupsテーブル
+|Column|Type|Options|
+|------|----|-------|
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
 ### Association
@@ -64,10 +66,11 @@ belongs_to :group
 
 
 ## chats_groupsテーブル
+|Column|Type|Options|
+|------|----|-------|
 |chat_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
 ### Association
 belongs_to :chat
 belongs_to :group
-
 
