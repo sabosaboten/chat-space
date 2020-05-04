@@ -28,18 +28,18 @@ Things you may want to cover:
 |------|----|-------|
 |name|string|null: false|
 |email|string|null: false, unique: true|
-|password| string|null: false|
-|group_id|integer|null: false, foreign_key: true|
+|password|string|null: false|
 ### Association
 has_many :chats
 has_many :groups, through: :users_groups
+has_many :users_groups
 
 ## chatsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|text|string|null: false|
-|image|string|null: false|
-|chat_id|integer|null: false, foreign_key: true|
+|text|string||
+|image|string||
+|user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
 ### Association
 belongs_to :user
@@ -49,11 +49,10 @@ belongs_to :group
 |Column|Type|Options|
 |------|----|-------|
 |group-name|string|null: false|
-|user_id|integer|null: false, foreign_key: true|
-|chat_id|integer|null: false, foreign_key: true|
 ### Association
 has_many :users, through: :users_groups
-has_many :chats, through: :chats_groups
+has_many :chats
+has_many :users_groups
 
 ## users_groupsテーブル
 |Column|Type|Options|
@@ -62,14 +61,4 @@ has_many :chats, through: :chats_groups
 |group_id|integer|null: false, foreign_key: true|
 ### Association
 belongs_to :user
-belongs_to :group
-
-
-## chats_groupsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|chat_id|integer|null: false, foreign_key: true|
-|group_id|integer|null: false, foreign_key: true|
-### Association
-belongs_to :chat
 belongs_to :group
