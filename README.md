@@ -73,4 +73,3 @@ belongs_to :group
 ### Association
 belongs_to :chat
 belongs_to :group
-
